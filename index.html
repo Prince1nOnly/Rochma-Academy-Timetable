@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#17634d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Rochma"><link rel="icon" type="image/svg+xml" href="icon.svg"><link rel="apple-touch-icon" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><script>if("serviceWorker"in navigator&&location.protocol!=="file:")addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script>
+<title>Rochma School Timetable · First Term 2026/2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f1ea;--sf:#fff;--ink:#1c2430;--mu:#677082;--ln:#e6e1d6;--br:#17634d;--bi:#fff;--so:#e5f0ea;--wr:#8f5700;--wb:#fff3d6;--sh:0 1px 2px rgba(20,30,40,.06),0 6px 18px rgba(20,30,40,.06);--hero:linear-gradient(135deg,#17634d,#2a8a6a);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161a;--sf:#1b2127;--ink:#eef1f4;--mu:#98a3af;--ln:#2b333b;--br:#6fcfa5;--bi:#0d1f17;--so:#1d3228;--wr:#f0c070;--wb:#33290f;--sh:none;--hero:linear-gradient(135deg,#1d4a3b,#276a53);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12161a;--sf:#1b2127;--ink:#eef1f4;--mu:#98a3af;--ln:#2b333b;--br:#6fcfa5;--bi:#0d1f17;--so:#1d3228;--wr:#f0c070;--wb:#33290f;--sh:none;--hero:linear-gradient(135deg,#1d4a3b,#276a53);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+button,input{font:inherit;color:inherit}
+.app{max-width:720px;margin:0 auto;padding:16px 16px 110px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+h1{margin:2px 0 0;font-size:26px;letter-spacing:-.02em;font-weight:800;line-height:1.15}
+.ic{border:1.5px solid var(--ln);background:var(--sf);border-radius:12px;padding:7px 11px;font-size:12px;font-weight:700;cursor:pointer;flex:none}
+.hero{background:var(--hero);color:#fff;border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
+.hero .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.hero .big{font-size:30px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px;line-height:1.1}
+.hero .sub{opacity:.92;font-weight:500}
+.hero .nx{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.25);font-size:14px;font-weight:600}
+.cta{background:var(--sf);border:1.5px dashed var(--br);border-radius:18px;padding:14px;margin-bottom:14px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.cta p{margin:0;font-size:14px}.cta b{display:block;font-size:15px}
+.cta.w{background:var(--wb);border:0;color:var(--wr)}
+.btn{border:0;background:var(--br);color:var(--bi);font-weight:700;padding:10px 15px;border-radius:12px;cursor:pointer;white-space:nowrap}
+.btn.o{background:transparent;border:1.5px solid var(--ln);color:var(--ink)}
+.btn.d{background:transparent;border:1.5px solid var(--ln);color:#c0392b}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.panel{background:var(--sf);border:1px solid var(--ln);border-radius:18px;padding:14px;margin-bottom:14px;box-shadow:var(--sh)}
+.grp{margin-bottom:12px}.grp:last-child{margin-bottom:0}
+.lbl{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);margin:0 0 7px;display:flex;justify-content:space-between;gap:8px}
+.lbl span{text-transform:none;letter-spacing:0;font-weight:600}
+.row{display:flex;gap:7px;overflow-x:auto;padding-bottom:3px;scrollbar-width:none}.row::-webkit-scrollbar{display:none}
+.row.wr{flex-wrap:wrap;overflow:visible}
+.chip{flex:none;font-size:14px;font-weight:600;background:transparent;border:1.5px solid var(--ln);border-radius:99px;padding:7px 13px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--br);border-color:var(--br);color:var(--bi)}
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-left:6px;vertical-align:middle;opacity:.7}
+input[type=text],input[type=time]{width:100%;background:var(--bg);border:1.5px solid var(--ln);border-radius:12px;padding:9px 12px;min-width:0}
+.tm{display:flex;gap:8px;align-items:center}.tm input{width:auto;flex:1}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:4px 2px 10px;flex-wrap:wrap}
+.sum{font-weight:700}.sum small{display:block;font-weight:500;color:var(--mu);font-size:13px}
+.seg{display:inline-flex;border:1.5px solid var(--ln);border-radius:12px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--mu);font-size:13px;font-weight:600;padding:7px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--so);color:var(--br)}
+h2.g{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin:20px 2px 8px;display:flex;align-items:center;gap:8px}
+h2.g::after{content:"";flex:1;height:1px;background:var(--ln)}
+.card{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:center;background:var(--sf);border:1px solid var(--ln);border-left:5px solid hsl(var(--h) 55% 48%);border-radius:14px;padding:11px 13px;margin-bottom:8px;box-shadow:var(--sh)}
+.card .t{font-size:13px;font-weight:700;line-height:1.25}.card .t span{display:block;color:var(--mu);font-weight:500}
+.card .n{font-weight:700;font-size:16px}.card .m{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.pill{font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;background:hsl(var(--h) 60% 94%);color:hsl(var(--h) 55% 30%)}
+.pill.o{background:var(--bg);color:var(--mu)}.pill.now{background:var(--br);color:var(--bi)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pill:not(.o):not(.now){background:hsl(var(--h) 30% 22%);color:hsl(var(--h) 70% 80%)}}
+:root[data-theme="dark"] .pill:not(.o):not(.now){background:hsl(var(--h) 30% 22%);color:hsl(var(--h) 70% 80%)}
+.card.now{outline:2px solid var(--br)}.card.past{opacity:.55}
+.card.fx{background:transparent;border-style:dashed;border-left:5px dashed var(--ln);box-shadow:none;padding:8px 13px}
+.card.fx .n{font-size:14px;font-weight:600;color:var(--mu)}
+.empty{text-align:center;color:var(--mu);padding:34px 12px;border:1.5px dashed var(--ln);border-radius:16px}
+.shift{background:var(--sf);border:1px solid var(--ln);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
+.shift .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
+.shift .hrs{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:2px 0}
+.shift .st{font-weight:700;color:var(--br)}
+.shift .pb{height:6px;border-radius:9px;background:var(--so);margin:10px 0 2px;overflow:hidden}.shift .pb i{display:block;height:100%;background:var(--br);border-radius:9px}
+.shift .sc{margin-top:8px;font-size:13px;color:var(--mu)}.shift.off{opacity:.8}
+.line small{display:block;color:var(--mu);font-weight:500}.line{align-items:flex-start}.line .ac{display:flex;gap:2px;flex:none}
+.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:6px;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));background:var(--sf);border-top:1px solid var(--ln);z-index:5}
+.tabs button{flex:1;max-width:200px;border:0;background:transparent;border-radius:14px;padding:9px 6px;font-size:13px;font-weight:700;color:var(--mu);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.tabs button b{font-size:18px;line-height:1}
+.tabs button[aria-current="page"]{background:var(--so);color:var(--br)}
+.sheet{position:fixed;inset:0;z-index:10;background:var(--bg);overflow-y:auto;padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(30px + env(safe-area-inset-bottom,0px))}
+.sheet[hidden]{display:none}
+.sheet .in{max-width:720px;margin:0 auto}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.sh b{font-size:20px}
+.line{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--ln);border-radius:12px;padding:8px 12px;margin-bottom:6px;background:var(--bg);font-weight:600}
+.line button{border:0;background:transparent;font-size:18px;color:var(--mu);cursor:pointer}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:var(--bg);border:1.5px solid var(--ln);border-radius:14px;padding:12px;margin-bottom:8px;cursor:pointer}
+.opt[aria-pressed="true"]{border-color:var(--br);background:var(--so)}
+.opt:disabled{opacity:.5;cursor:not-allowed}
+.opt i{font-style:normal;font-size:22px}.opt small{display:block;color:var(--mu);font-weight:500}
+.err{color:#c0392b;font-size:13px;font-weight:600;margin:8px 0}
+.mu{color:var(--mu);font-size:13px}
+#toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-weight:600;font-size:14px;z-index:20;opacity:0;pointer-events:none;transition:.25s;max-width:90vw;text-align:center}
+#toast.on{opacity:1}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top"><div><div class="eyebrow">Rochma School · Term 1 · 2026/27 · Provisional</div><h1 id="ttl"></h1></div><button class="ic" id="thm" data-a="theme"></button></header>
+  <main id="v"></main>
+</div>
+<nav class="tabs" id="tabs"></nav>
+<div class="sheet" id="sheet" hidden></div>
+<div id="toast" role="status"></div>
+
+<script>
+"use strict";
+const D=[{"lvl":0,"cls":4,"day":"Monday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":4,"day":"Monday","s":"09:00","e":"10:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":4,"day":"Monday","s":"10:30","e":"11:15","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":4,"day":"Monday","s":"11:15","e":"12:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":0,"cls":4,"day":"Monday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":0,"cls":4,"day":"Monday","s":"14:00","e":"15:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":0,"cls":5,"day":"Monday","s":"08:00","e":"09:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":5,"day":"Monday","s":"09:00","e":"10:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":5,"day":"Monday","s":"10:30","e":"11:15","sub":"History","raw":"HISTORY","flag":false},{"lvl":0,"cls":5,"day":"Monday","s":"11:15","e":"12:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":5,"day":"Monday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":0,"cls":5,"day":"Monday","s":"14:00","e":"15:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":0,"cls":6,"day":"Monday","s":"08:00","e":"09:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":0,"cls":6,"day":"Monday","s":"09:00","e":"10:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":6,"day":"Monday","s":"10:30","e":"11:15","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":0,"cls":6,"day":"Monday","s":"11:15","e":"12:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":6,"day":"Monday","s":"13:00","e":"14:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":6,"day":"Monday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":0,"cls":4,"day":"Tuesday","s":"08:00","e":"09:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":4,"day":"Tuesday","s":"09:00","e":"10:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":4,"day":"Tuesday","s":"10:30","e":"11:15","sub":"Ghanaian Language","raw":"GH. LANGUAGE","flag":false},{"lvl":0,"cls":4,"day":"Tuesday","s":"11:15","e":"12:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":4,"day":"Tuesday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":0,"cls":4,"day":"Tuesday","s":"14:00","e":"15:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":0,"cls":5,"day":"Tuesday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":5,"day":"Tuesday","s":"09:00","e":"10:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":5,"day":"Tuesday","s":"10:30","e":"11:15","sub":"Ghanaian Language","raw":"GH. LANGUAGE","flag":false},{"lvl":0,"cls":5,"day":"Tuesday","s":"11:15","e":"12:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":5,"day":"Tuesday","s":"13:00","e":"14:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":0,"cls":5,"day":"Tuesday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":0,"cls":6,"day":"Tuesday","s":"08:00","e":"09:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":6,"day":"Tuesday","s":"09:00","e":"10:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":0,"cls":6,"day":"Tuesday","s":"10:30","e":"11:15","sub":"Ghanaian Language","raw":"GH. LANGUAGE","flag":false},{"lvl":0,"cls":6,"day":"Tuesday","s":"11:15","e":"12:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":0,"cls":6,"day":"Tuesday","s":"13:00","e":"14:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":0,"cls":6,"day":"Tuesday","s":"14:00","e":"15:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":4,"day":"Wednesday","s":"08:00","e":"09:00","sub":"Worship","raw":"WORSHIP","flag":false},{"lvl":0,"cls":4,"day":"Wednesday","s":"09:00","e":"10:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":4,"day":"Wednesday","s":"10:30","e":"11:15","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":0,"cls":4,"day":"Wednesday","s":"11:15","e":"12:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":4,"day":"Wednesday","s":"13:00","e":"14:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":0,"cls":4,"day":"Wednesday","s":"14:00","e":"15:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":5,"day":"Wednesday","s":"08:00","e":"09:00","sub":"Worship","raw":"WORSHIP","flag":false},{"lvl":0,"cls":5,"day":"Wednesday","s":"09:00","e":"10:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":5,"day":"Wednesday","s":"10:30","e":"11:15","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":5,"day":"Wednesday","s":"11:15","e":"12:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":0,"cls":5,"day":"Wednesday","s":"13:00","e":"14:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":0,"cls":5,"day":"Wednesday","s":"14:00","e":"15:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":0,"cls":6,"day":"Wednesday","s":"08:00","e":"09:00","sub":"Worship","raw":"WORSHIP","flag":false},{"lvl":0,"cls":6,"day":"Wednesday","s":"09:00","e":"10:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":0,"cls":6,"day":"Wednesday","s":"10:30","e":"11:15","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":6,"day":"Wednesday","s":"11:15","e":"12:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":6,"day":"Wednesday","s":"13:00","e":"14:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":0,"cls":6,"day":"Wednesday","s":"14:00","e":"15:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":0,"cls":4,"day":"Thursday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":4,"day":"Thursday","s":"09:00","e":"10:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":0,"cls":4,"day":"Thursday","s":"10:30","e":"11:15","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":4,"day":"Thursday","s":"11:15","e":"12:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":4,"day":"Thursday","s":"13:00","e":"14:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":0,"cls":4,"day":"Thursday","s":"14:00","e":"15:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":0,"cls":5,"day":"Thursday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":5,"day":"Thursday","s":"09:00","e":"10:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":0,"cls":5,"day":"Thursday","s":"10:30","e":"11:15","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":0,"cls":5,"day":"Thursday","s":"11:15","e":"12:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":5,"day":"Thursday","s":"13:00","e":"14:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":5,"day":"Thursday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":0,"cls":6,"day":"Thursday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":6,"day":"Thursday","s":"09:00","e":"10:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":0,"cls":6,"day":"Thursday","s":"10:30","e":"11:15","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":6,"day":"Thursday","s":"11:15","e":"12:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":0,"cls":6,"day":"Thursday","s":"13:00","e":"14:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":0,"cls":6,"day":"Thursday","s":"14:00","e":"15:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":0,"cls":4,"day":"Friday","s":"08:00","e":"10:00","sub":"Friday Test","raw":"FRIDAY TEST","flag":false},{"lvl":0,"cls":4,"day":"Friday","s":"10:30","e":"11:15","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":0,"cls":4,"day":"Friday","s":"11:15","e":"12:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":0,"cls":4,"day":"Friday","s":"13:00","e":"15:30","sub":"P.E / Extra-curricular","raw":"P.E /EXTRA CURRICULAR ACTIVITIES","flag":false},{"lvl":0,"cls":5,"day":"Friday","s":"08:00","e":"10:00","sub":"Friday Test","raw":"FRIDAY TEST","flag":false},{"lvl":0,"cls":5,"day":"Friday","s":"10:30","e":"11:15","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":5,"day":"Friday","s":"11:15","e":"12:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":0,"cls":5,"day":"Friday","s":"13:00","e":"15:30","sub":"P.E / Extra-curricular","raw":"P.E /EXTRA CURRICULAR ACTIVITIES","flag":false},{"lvl":0,"cls":6,"day":"Friday","s":"08:00","e":"10:00","sub":"Friday Test","raw":"FRIDAY TEST","flag":false},{"lvl":0,"cls":6,"day":"Friday","s":"10:30","e":"11:15","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":0,"cls":6,"day":"Friday","s":"11:15","e":"12:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":0,"cls":6,"day":"Friday","s":"13:00","e":"15:30","sub":"P.E / Extra-curricular","raw":"P.E /EXTRA CURRICULAR ACTIVITIES","flag":false},{"lvl":1,"cls":7,"day":"Monday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":7,"day":"Monday","s":"09:00","e":"10:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":7,"day":"Monday","s":"10:30","e":"11:30","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":7,"day":"Monday","s":"11:30","e":"12:30","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":1,"cls":7,"day":"Monday","s":"13:00","e":"14:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":1,"cls":7,"day":"Monday","s":"14:00","e":"15:30","sub":"Career Technology","raw":"CARRER TECHNOLOGY","flag":false},{"lvl":1,"cls":8,"day":"Monday","s":"08:00","e":"09:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":8,"day":"Monday","s":"09:00","e":"10:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":1,"cls":8,"day":"Monday","s":"10:30","e":"11:30","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":8,"day":"Monday","s":"11:30","e":"12:30","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":8,"day":"Monday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":1,"cls":8,"day":"Monday","s":"14:00","e":"15:30","sub":"Social Studies","raw":"SOCIAL STUDIES","flag":false},{"lvl":1,"cls":9,"day":"Monday","s":"08:00","e":"09:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":9,"day":"Monday","s":"09:00","e":"10:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":9,"day":"Monday","s":"10:30","e":"11:30","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":1,"cls":9,"day":"Monday","s":"11:30","e":"12:30","sub":"Career Technology","raw":"CARRERTECH.","flag":false},{"lvl":1,"cls":9,"day":"Monday","s":"13:00","e":"14:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":1,"cls":9,"day":"Monday","s":"14:00","e":"15:30","sub":"Mathematics","raw":"MATHEMATICS","flag":false},{"lvl":1,"cls":7,"day":"Tuesday","s":"08:00","e":"09:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":7,"day":"Tuesday","s":"09:00","e":"10:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":7,"day":"Tuesday","s":"10:30","e":"11:30","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":7,"day":"Tuesday","s":"11:30","e":"12:30","sub":"Social Studies","raw":"SOCIAL STD.","flag":false},{"lvl":1,"cls":7,"day":"Tuesday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":1,"cls":7,"day":"Tuesday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":1,"cls":7,"day":"Tuesday","s":"15:00","e":"15:30","sub":"Career Technology","raw":"C. TECH","flag":false},{"lvl":1,"cls":8,"day":"Tuesday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":8,"day":"Tuesday","s":"09:00","e":"10:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":8,"day":"Tuesday","s":"10:30","e":"11:30","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":1,"cls":8,"day":"Tuesday","s":"11:30","e":"12:30","sub":"French","raw":"FRENCH","flag":false},{"lvl":1,"cls":8,"day":"Tuesday","s":"13:00","e":"14:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":8,"day":"Tuesday","s":"14:00","e":"15:00","sub":"Social Studies","raw":"SOCIAL","flag":false},{"lvl":1,"cls":8,"day":"Tuesday","s":"15:00","e":"15:30","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":9,"day":"Tuesday","s":"08:00","e":"10:00","sub":"Social Studies","raw":"SOCIAL STUDIES","flag":false},{"lvl":1,"cls":9,"day":"Tuesday","s":"10:30","e":"11:30","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":9,"day":"Tuesday","s":"11:30","e":"12:30","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":9,"day":"Tuesday","s":"13:00","e":"14:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":9,"day":"Tuesday","s":"14:00","e":"15:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":1,"cls":9,"day":"Tuesday","s":"15:00","e":"15:30","sub":"Creative Arts","raw":"C.ARTS","flag":false},{"lvl":1,"cls":7,"day":"Wednesday","s":"08:00","e":"09:00","sub":"Worship","raw":"WORSHIP","flag":false},{"lvl":1,"cls":7,"day":"Wednesday","s":"09:00","e":"10:00","sub":"Social Studies","raw":"SOCIAL","flag":false},{"lvl":1,"cls":7,"day":"Wednesday","s":"10:30","e":"11:30","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":7,"day":"Wednesday","s":"11:30","e":"12:30","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":1,"cls":7,"day":"Wednesday","s":"13:00","e":"14:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":7,"day":"Wednesday","s":"14:00","e":"15:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":7,"day":"Wednesday","s":"15:00","e":"15:30","sub":"Creative Arts","raw":"CREATIVE ARTS","flag":false},{"lvl":1,"cls":8,"day":"Wednesday","s":"08:00","e":"09:00","sub":"Worship","raw":"WORSHIP","flag":false},{"lvl":1,"cls":8,"day":"Wednesday","s":"09:00","e":"10:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":8,"day":"Wednesday","s":"10:30","e":"11:30","sub":"Social Studies","raw":"SOCIAL","flag":false},{"lvl":1,"cls":8,"day":"Wednesday","s":"11:30","e":"12:30","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":1,"cls":8,"day":"Wednesday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":1,"cls":8,"day":"Wednesday","s":"14:00","e":"15:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":1,"cls":8,"day":"Wednesday","s":"15:00","e":"15:30","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":1,"cls":9,"day":"Wednesday","s":"08:00","e":"09:00","sub":"Worship","raw":"WORSHIP","flag":false},{"lvl":1,"cls":9,"day":"Wednesday","s":"09:00","e":"10:00","sub":"Ghanaian Language","raw":"GH. LANG.","flag":false},{"lvl":1,"cls":9,"day":"Wednesday","s":"10:30","e":"11:30","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":9,"day":"Wednesday","s":"11:30","e":"12:30","sub":"Career Technology","raw":"CAREERTECH.","flag":false},{"lvl":1,"cls":9,"day":"Wednesday","s":"13:00","e":"14:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":9,"day":"Wednesday","s":"14:00","e":"15:30","sub":"English","raw":"ENGLISHLANGUAGE","flag":false},{"lvl":1,"cls":7,"day":"Thursday","s":"08:00","e":"09:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":7,"day":"Thursday","s":"09:00","e":"10:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":7,"day":"Thursday","s":"10:30","e":"11:30","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":1,"cls":7,"day":"Thursday","s":"11:30","e":"12:30","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":1,"cls":7,"day":"Thursday","s":"13:00","e":"14:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":1,"cls":7,"day":"Thursday","s":"14:00","e":"15:00","sub":"Library","raw":"LIBRARY","flag":false},{"lvl":1,"cls":7,"day":"Thursday","s":"15:00","e":"15:30","sub":"French","raw":"FRENCH","flag":false},{"lvl":1,"cls":8,"day":"Thursday","s":"08:00","e":"09:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":8,"day":"Thursday","s":"09:00","e":"10:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":1,"cls":8,"day":"Thursday","s":"10:30","e":"11:30","sub":"Social Studies","raw":"SOCIAL","flag":false},{"lvl":1,"cls":8,"day":"Thursday","s":"11:30","e":"12:30","sub":"English","raw":"ENGLISH","flag":false},{"lvl":1,"cls":8,"day":"Thursday","s":"13:00","e":"14:00","sub":"Career Technology","raw":"C. TECH","flag":false},{"lvl":1,"cls":8,"day":"Thursday","s":"14:00","e":"15:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":8,"day":"Thursday","s":"15:00","e":"15:30","sub":"Library","raw":"LIBRARY","flag":false},{"lvl":1,"cls":9,"day":"Thursday","s":"08:00","e":"09:00","sub":"Social Studies","raw":"SOCIAL","flag":false},{"lvl":1,"cls":9,"day":"Thursday","s":"09:00","e":"10:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":1,"cls":9,"day":"Thursday","s":"10:30","e":"11:30","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":9,"day":"Thursday","s":"11:30","e":"12:30","sub":"French","raw":"FRENCH","flag":false},{"lvl":1,"cls":9,"day":"Thursday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":1,"cls":9,"day":"Thursday","s":"14:00","e":"15:30","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":7,"day":"Friday","s":"08:00","e":"09:00","sub":"Ghanaian Language","raw":"GH.LANG.","flag":false},{"lvl":1,"cls":7,"day":"Friday","s":"09:00","e":"10:00","sub":"Friday Test","raw":"FRIDAY TEST","flag":false},{"lvl":1,"cls":7,"day":"Friday","s":"10:30","e":"11:30","sub":"Social Studies","raw":"SOCIAL STUDIES","flag":false},{"lvl":1,"cls":7,"day":"Friday","s":"11:30","e":"12:30","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":1,"cls":7,"day":"Friday","s":"13:00","e":"14:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":1,"cls":7,"day":"Friday","s":"14:00","e":"15:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":7,"day":"Friday","s":"15:00","e":"16:00","sub":"P.E / Extra-curricular","raw":"P.E /EXTRA CURRICULAR ACTIVITIES","flag":false},{"lvl":1,"cls":8,"day":"Friday","s":"08:00","e":"09:00","sub":"Ghanaian Language","raw":"GH.LANG.","flag":false},{"lvl":1,"cls":8,"day":"Friday","s":"09:00","e":"10:00","sub":"Friday Test","raw":"FRIDAY TEST","flag":false},{"lvl":1,"cls":8,"day":"Friday","s":"10:30","e":"11:30","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":1,"cls":8,"day":"Friday","s":"11:30","e":"12:30","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":1,"cls":8,"day":"Friday","s":"13:00","e":"14:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":1,"cls":8,"day":"Friday","s":"14:00","e":"15:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":1,"cls":8,"day":"Friday","s":"15:00","e":"16:00","sub":"P.E / Extra-curricular","raw":"P.E /EXTRA CURRICULAR ACTIVITIES","flag":false},{"lvl":1,"cls":9,"day":"Friday","s":"06:30","e":"07:50","sub":"Ghanaian Language","raw":"GH. LANGUAGE","flag":true},{"lvl":1,"cls":9,"day":"Friday","s":"08:00","e":"09:00","sub":"Friday Test","raw":"FRI. TEST","flag":true},{"lvl":1,"cls":9,"day":"Friday","s":"09:00","e":"10:00","sub":"English","raw":"ENGLISH","flag":true},{"lvl":1,"cls":9,"day":"Friday","s":"10:30","e":"11:30","sub":"Computing","raw":"COMPUTING","flag":true},{"lvl":1,"cls":9,"day":"Friday","s":"11:30","e":"12:30","sub":"Library","raw":"LIBERAY","flag":true},{"lvl":1,"cls":9,"day":"Friday","s":"13:00","e":"14:00","sub":"Social Studies","raw":"SOCIAL","flag":true},{"lvl":1,"cls":9,"day":"Friday","s":"14:00","e":"15:00","sub":"French","raw":"FRENCH","flag":true},{"lvl":1,"cls":9,"day":"Friday","s":"15:00","e":"15:30","sub":"R.M.E","raw":"R.M.E","flag":true},{"lvl":1,"cls":9,"day":"Friday","s":"15:30","e":"16:00","sub":"R.M.E","raw":"R.M.E","flag":true},{"lvl":2,"cls":1,"day":"Monday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":1,"day":"Monday","s":"09:00","e":"10:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":1,"day":"Monday","s":"10:30","e":"11:15","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":1,"day":"Monday","s":"11:15","e":"12:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":2,"cls":1,"day":"Monday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":2,"cls":1,"day":"Monday","s":"14:00","e":"15:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":2,"cls":2,"day":"Monday","s":"08:00","e":"09:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":2,"day":"Monday","s":"09:00","e":"10:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":2,"day":"Monday","s":"10:30","e":"11:15","sub":"History","raw":"HISTORY","flag":false},{"lvl":2,"cls":2,"day":"Monday","s":"11:15","e":"12:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":2,"day":"Monday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"RME","flag":false},{"lvl":2,"cls":2,"day":"Monday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C.ARTS","flag":false},{"lvl":2,"cls":3,"day":"Monday","s":"08:00","e":"09:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":2,"cls":3,"day":"Monday","s":"09:00","e":"10:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":3,"day":"Monday","s":"10:30","e":"11:15","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":2,"cls":3,"day":"Monday","s":"11:15","e":"12:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":3,"day":"Monday","s":"13:00","e":"14:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":3,"day":"Monday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":2,"cls":1,"day":"Tuesday","s":"08:00","e":"09:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":1,"day":"Tuesday","s":"09:00","e":"10:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":1,"day":"Tuesday","s":"10:30","e":"11:15","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":1,"day":"Tuesday","s":"11:15","e":"12:00","sub":"Ghanaian Language","raw":"GH.LANGUAGE","flag":false},{"lvl":2,"cls":1,"day":"Tuesday","s":"13:00","e":"14:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":2,"cls":1,"day":"Tuesday","s":"14:00","e":"15:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":2,"cls":2,"day":"Tuesday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":2,"day":"Tuesday","s":"09:00","e":"10:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":2,"day":"Tuesday","s":"10:30","e":"11:15","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":2,"day":"Tuesday","s":"11:15","e":"12:00","sub":"Ghanaian Language","raw":"GH.LANGUAGE","flag":false},{"lvl":2,"cls":2,"day":"Tuesday","s":"13:00","e":"14:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":2,"cls":2,"day":"Tuesday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":2,"cls":3,"day":"Tuesday","s":"08:00","e":"09:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":2,"cls":3,"day":"Tuesday","s":"09:00","e":"10:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":2,"cls":3,"day":"Tuesday","s":"10:30","e":"11:15","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":3,"day":"Tuesday","s":"11:15","e":"12:00","sub":"Ghanaian Language","raw":"GH.LANGUAGE","flag":false},{"lvl":2,"cls":3,"day":"Tuesday","s":"13:00","e":"14:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":3,"day":"Tuesday","s":"14:00","e":"15:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":2,"cls":1,"day":"Wednesday","s":"08:00","e":"09:00","sub":"Worship","raw":"WORSHIP","flag":false},{"lvl":2,"cls":1,"day":"Wednesday","s":"09:00","e":"10:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":1,"day":"Wednesday","s":"10:30","e":"11:15","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":2,"cls":1,"day":"Wednesday","s":"11:15","e":"12:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":1,"day":"Wednesday","s":"13:00","e":"14:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":2,"cls":1,"day":"Wednesday","s":"14:00","e":"15:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":2,"cls":2,"day":"Wednesday","s":"08:00","e":"09:00","sub":"Worship","raw":"WORSHIP","flag":false},{"lvl":2,"cls":2,"day":"Wednesday","s":"09:00","e":"10:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":2,"day":"Wednesday","s":"10:30","e":"11:15","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":2,"day":"Wednesday","s":"11:15","e":"12:00","sub":"R.M.E","raw":"R.M.E","flag":false},{"lvl":2,"cls":2,"day":"Wednesday","s":"13:00","e":"14:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":2,"day":"Wednesday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":2,"cls":3,"day":"Wednesday","s":"08:00","e":"09:00","sub":"Worship","raw":"WORSHIP","flag":false},{"lvl":2,"cls":3,"day":"Wednesday","s":"09:00","e":"10:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":2,"cls":3,"day":"Wednesday","s":"10:30","e":"11:15","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":3,"day":"Wednesday","s":"11:15","e":"12:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":2,"cls":3,"day":"Wednesday","s":"13:00","e":"14:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":2,"cls":3,"day":"Wednesday","s":"14:00","e":"15:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":1,"day":"Thursday","s":"08:00","e":"09:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":2,"cls":1,"day":"Thursday","s":"09:00","e":"10:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":2,"cls":1,"day":"Thursday","s":"10:30","e":"11:15","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":1,"day":"Thursday","s":"11:15","e":"12:00","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":1,"day":"Thursday","s":"13:00","e":"14:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":1,"day":"Thursday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":2,"cls":2,"day":"Thursday","s":"08:00","e":"09:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":2,"cls":2,"day":"Thursday","s":"09:00","e":"10:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":2,"cls":2,"day":"Thursday","s":"10:30","e":"11:15","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":2,"day":"Thursday","s":"11:15","e":"12:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":2,"day":"Thursday","s":"13:00","e":"14:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":2,"day":"Thursday","s":"14:00","e":"15:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":2,"cls":3,"day":"Thursday","s":"08:00","e":"09:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":3,"day":"Thursday","s":"09:00","e":"10:00","sub":"History","raw":"HISTORY","flag":false},{"lvl":2,"cls":3,"day":"Thursday","s":"10:30","e":"11:15","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":3,"day":"Thursday","s":"11:15","e":"12:00","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":2,"cls":3,"day":"Thursday","s":"13:00","e":"14:00","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":2,"cls":3,"day":"Thursday","s":"14:00","e":"15:00","sub":"English","raw":"ENGLISH","flag":false},{"lvl":2,"cls":1,"day":"Friday","s":"08:00","e":"10:00","sub":"Friday Test","raw":"FRIDAY TEST","flag":false},{"lvl":2,"cls":1,"day":"Friday","s":"10:30","e":"11:15","sub":"Creative Arts","raw":"C. ARTS","flag":false},{"lvl":2,"cls":1,"day":"Friday","s":"11:15","e":"12:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":2,"cls":1,"day":"Friday","s":"13:00","e":"15:30","sub":"P.E / Extra-curricular","raw":"P.E /EXTRA CURRICULAR ACTIVITIES","flag":false},{"lvl":2,"cls":2,"day":"Friday","s":"08:00","e":"10:00","sub":"Friday Test","raw":"FRIDAY TEST","flag":false},{"lvl":2,"cls":2,"day":"Friday","s":"10:30","e":"11:15","sub":"Computing","raw":"COMPUTING","flag":false},{"lvl":2,"cls":2,"day":"Friday","s":"11:15","e":"12:00","sub":"French","raw":"FRENCH","flag":false},{"lvl":2,"cls":2,"day":"Friday","s":"13:00","e":"15:30","sub":"P.E / Extra-curricular","raw":"P.E /EXTRA CURRICULAR ACTIVITIES","flag":false},{"lvl":2,"cls":3,"day":"Friday","s":"08:00","e":"10:00","sub":"Friday Test","raw":"FRIDAY TEST","flag":false},{"lvl":2,"cls":3,"day":"Friday","s":"10:30","e":"11:15","sub":"Science","raw":"SCIENCE","flag":false},{"lvl":2,"cls":3,"day":"Friday","s":"11:15","e":"12:00","sub":"Mathematics","raw":"MATHS","flag":false},{"lvl":2,"cls":3,"day":"Friday","s":"13:00","e":"15:30","sub":"P.E / Extra-curricular","raw":"P.E /EXTRA CURRICULAR ACTIVITIES","flag":false}];
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday"];
+const SUBS=[...new Set(D.map(o=>o.sub))].sort((a,b)=>a.localeCompare(b));
+const HUE={};SUBS.forEach((s,i)=>HUE[s]=Math.round(i*360/SUBS.length+12));
+const CLASSES=[1,2,3,4,5,6,7,8,9];
+const GROUPS=[{l:"Lower 1–3",c:[1,2,3]},{l:"Upper 4–6",c:[4,5,6]},{l:"JHS 7–9",c:[7,8,9]}];
+const LVN=c=>c<=3?"Lower Primary":c<=6?"Upper Primary":"JHS";
+const STARTS=[...new Set(D.map(o=>o.s))].filter(s=>s>="08:00").sort();
+const KEY="rochma-profile-v1";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const m=s=>{const[a,b]=s.split(":");return +a*60+ +b};
+const f12=s=>{let[h,i]=s.split(":").map(Number);const p=h>=12?"PM":"AM";return (h%12||12)+":"+String(i).padStart(2,"0")+" "+p};
+const dur=o=>{const d=m(o.e)-m(o.s);return d%60?d+" min":d/60+(d===60?" hr":" hrs")};
+const tog=(set,v)=>set.has(v)?set.delete(v):set.add(v);
+const byTime=(a,b)=>m(a.s)-m(b.s)||a.cls-b.cls;
+const clock=()=>{const n=new Date(),w=n.getDay();return{day:w>=1&&w<=5?DAYS[w-1]:null,min:n.getHours()*60+n.getMinutes(),hm:String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0")}};
+
+/* ---------- profile ---------- */
+const TIME=/^([01]\d|2[0-3]):[0-5]\d$/,FILE="rochma-teaching-profile.json";
+const validSc=s=>s&&Array.isArray(s.days)&&s.days.every(d=>DAYS.includes(d))&&s.shift&&TIME.test(s.shift.s)&&TIME.test(s.shift.e)&&s.shift.s<s.shift.e&&Array.isArray(s.lines)&&s.lines.length>0&&s.lines.every(l=>SUBS.includes(l.sub)&&Array.isArray(l.cls)&&l.cls.length>0&&l.cls.every(c=>CLASSES.includes(c)));
+function normalize(p){
+ if(!p||typeof p!=="object")return null;
+ if(!p.schedules&&Array.isArray(p.lines))p={...p,schedules:[{label:"My schedule",days:p.days||[],shift:{s:"07:30",e:"15:30"},lines:p.lines}]};
+ if(!Array.isArray(p.schedules)||!p.schedules.length||!p.schedules.every(validSc))return null;
+ return{v:2,name:String(p.name||"").slice(0,40),updated:p.updated||Date.now(),backup:p.backup||null,
+  schedules:p.schedules.map((x,i)=>({id:x.id||"s"+i,label:String(x.label||"Schedule "+(i+1)).slice(0,30),days:DAYS.filter(d=>x.days.includes(d)),shift:{s:x.shift.s,e:x.shift.e},lines:x.lines.map(l=>({sub:l.sub,cls:[...new Set(l.cls)].sort((a,b)=>a-b)}))}))}}
+let P=null;try{P=normalize(JSON.parse(localStorage.getItem(KEY)||"null"))}catch(e){}
+const persist=()=>{try{localStorage.setItem(KEY,JSON.stringify(P));return true}catch(e){return false}};
+const payload=()=>JSON.stringify({app:"rochma-timetable",v:2,name:P.name,updated:P.updated,schedules:P.schedules},null,1);
+const onDay=(x,d)=>!x.days.length||x.days.includes(d);
+const matchSc=(x,o)=>onDay(x,o.day)&&m(o.s)>=m(x.shift.s)&&m(o.e)<=m(x.shift.e)&&x.lines.some(l=>l.sub===o.sub&&l.cls.includes(o.cls));
+const mine=o=>!!P&&P.schedules.some(x=>matchSc(x,o));
+const shiftsOn=d=>P?P.schedules.filter(x=>onDay(x,d)):[];
+const win=a=>({s:a.map(x=>x.shift.s).sort()[0],e:a.map(x=>x.shift.e).sort().pop()});
+const rel=n=>n>=60?Math.floor(n/60)+" h"+(n%60?" "+n%60+" min":""):n+" min";
+const dayTxt=x=>x.days.length?x.days.map(d=>d.slice(0,3)).join(", "):"Every day";
+const fixed=c=>{const j=c>=7;return[
+ {s:"06:30",e:"07:00",sub:"Arrival & clean-up",days:DAYS},{s:"07:00",e:"07:30",sub:"Silent hour (story books only)",days:DAYS},
+ {s:"07:30",e:"07:50",sub:"Assembly",days:DAYS},{s:"10:00",e:"10:30",sub:"Break",days:DAYS},
+ {s:j?"12:30":"12:00",e:"13:00",sub:"Lunch",days:DAYS},
+ {s:j?"15:30":"15:00",e:j?"16:00":"15:30",sub:"Reading time (story books only)",days:DAYS.slice(0,4)}]};
+
+/* ---------- state ---------- */
+const clk0=clock();
+const st={tab:"home",hd:null,lv:new Set(),cls:new Set(),day:new Set([clk0.day||"Monday"]),sub:new Set(),t:"",g:"day",mine:false};
+let E=null,busy="",err="",backupDir=null;
+const THEMES=["auto","light","dark"];let theme="auto";
+try{theme=localStorage.getItem("rochma-theme")||"auto"}catch(e){}
+
+/* ---------- pieces ---------- */
+const chip=(l,on,a,v,dot)=>`<button class="chip" aria-pressed="${!!on}" data-a="${a}"${v===undefined?"":` data-v="${esc(v)}"`}>${l}${dot?'<i class="dot"></i>':""}</button>`;
+function card(o,{cls=true,state=""}={}){
+ const fx=!!o.x,hue=fx?0:HUE[o.sub],k=clock();
+ const now=!fx&&state==="now";const p=[];
+ if(now)p.push(`<span class="pill now">Now · ${m(o.e)-k.min} min left</span>`);
+ if(!fx){if(cls)p.push(`<span class="pill">Class ${o.cls}</span>`);p.push(`<span class="pill o">${dur(o)}</span>`)}
+ return `<div class="card${fx?" fx":""}${state?" "+state:""}" style="--h:${hue}"><div class="t">${f12(o.s)}<span>${o.mark?"":"to "+f12(o.e)}</span></div><div><div class="n">${o.sub}</div><div class="m">${p.join("")}</div></div></div>`}
+const stateOf=(o,day,k)=>day!==k.day?"":k.min>=m(o.e)?"past":k.min>=m(o.s)?"now":"";
+function snap(list){
+ const k=clock();let di=k.day?DAYS.indexOf(k.day):0,mn=k.day?k.min:-1;
+ for(let i=0;i<5;i++){
+  const day=DAYS[di],L=list.filter(o=>o.day===day).sort(byTime);
+  const cur=L.filter(o=>m(o.s)<=mn&&mn<m(o.e)),nx=L.filter(o=>m(o.s)>mn);
+  if(cur.length||nx.length)return{day,today:i===0&&!!k.day,cur,next:nx.length?nx.filter(o=>o.s===nx[0].s):[]};
+  di=(di+1)%5;mn=-1}
+ return{day:DAYS[0],today:false,cur:[],next:[]}}
+const lessonLine=o=>`${o.sub} · Class ${o.cls}`;
+
+/* ---------- views ---------- */
+function shiftCard(day,k){
+ const sc=shiftsOn(day);
+ if(!sc.length)return `<section class="shift off"><div class="k">${day}</div><div class="hrs">Off duty</div><div class="sc">No shift scheduled on ${day}.</div></section>`;
+ const w=win(sc),a=m(w.s),b=m(w.e),t=day===k.day;let st2="",pct=0;
+ if(t){if(k.min<a)st2="Starts in "+rel(a-k.min);else if(k.min<b){st2="In progress · ends in "+rel(b-k.min);pct=Math.round((k.min-a)/(b-a)*100)}else{st2="Shift ended";pct=100}}
+ return `<section class="shift"><div class="k">${t?"Today’s shift":day+" shift"}</div><div class="hrs">${f12(w.s)} – ${f12(w.e)}</div>${t?`<div class="st">${st2}</div><div class="pb"><i style="width:${pct}%"></i></div>`:""}${sc.length>1?`<div class="sc">${sc.map(x=>esc(x.label)+": "+f12(x.shift.s)+"–"+f12(x.shift.e)).join(" · ")}</div>`:""}</section>`}
+function homeView(){
+ const k=clock(),list=P?D.filter(mine):D,S=snap(list),day=st.hd||S.day;let h="";
+ if(P&&!P.backup)h+=`<div class="cta w"><p><b>Backup needed</b>Your profile is saved on this phone only.</p><button class="btn" data-a="edit">Back up</button></div>`;
+ if(!P)h+=`<div class="cta"><p><b>Set up your teaching profile</b>Add your subjects, schedules and shifts.</p><button class="btn" data-a="edit">Create</button></div>`;
+ if(P)h+=shiftCard(st.hd||k.day||S.day,k);
+ if(!st.hd){
+  const lead=S.today?(S.cur.length?"Now":"Free right now"):"Next · "+S.day;
+  if(P){const c=S.cur[0],nx=S.next[0];
+   h+=`<section class="hero"><div class="k">${lead}</div>`+
+    (c?`<div class="big">${c.sub}</div><div class="sub">Class ${c.cls} · until ${f12(c.e)} · ${m(c.e)-k.min} min left</div>`
+      :`<div class="big">${nx?nx.sub:"No lessons"}</div><div class="sub">${nx?`Class ${nx.cls} · ${S.today?"starts":"from"} ${f12(nx.s)}`:"Nothing matches your schedules."}</div>`)+
+    (c&&nx?`<div class="nx">Next · ${f12(nx.s)} — ${lessonLine(nx)}</div>`:"")+`</section>`;
+  }else{
+   h+=`<section class="hero"><div class="k">${lead}</div><div class="big">${S.cur.length?S.cur.length+" classes in session":S.next.length?"Up next at "+f12(S.next[0].s):"No lessons"}</div><div class="sub">General view of the whole school</div></section>`;
+   if(S.cur.length)h+=`<h2 class="g">Happening now</h2>`+S.cur.map(o=>card(o,{state:"now"})).join("");
+   if(S.next.length)h+=`<h2 class="g">Up next · ${f12(S.next[0].s)}</h2>`+S.next.map(o=>card(o)).join("");
+   return h+`<p class="mu" style="text-align:center;margin-top:18px">Use <b>Explore</b> to look up any class, subject or time.</p>`}
+ }
+ h+=`<div class="row" style="margin:6px 0 4px">${DAYS.map(d=>chip(d.slice(0,3),d===day,"hday",d,d===k.day)).join("")}</div>`;
+ const L=list.filter(o=>o.day===day).sort(byTime),sc=shiftsOn(day),w=sc.length?win(sc):null;
+ h+=`<h2 class="g">${P?"My "+day:day}</h2>`;
+ if(w)h+=card({x:1,mark:1,s:w.s,e:w.s,sub:"Shift starts"});
+ h+=L.length?L.map(o=>card(o,{state:stateOf(o,day,k)})).join(""):`<div class="empty">No lessons on ${day}.</div>`;
+ if(w)h+=card({x:1,mark:1,s:w.e,e:w.e,sub:"Shift ends"});
+ return h}
+
+function exploreView(){
+ let h=`<section class="panel">
+ <div class="grp"><p class="lbl">Level <span>select one or more</span></p><div class="row">${chip("All classes",!st.lv.size,"lvAll")}${GROUPS.map((g,i)=>chip(g.l,st.lv.has(i),"lv",i)).join("")}</div>`+
+ (st.lv.size?`<p class="lbl" style="margin-top:12px">Narrow to classes <span>optional</span></p><div class="row wr">${GROUPS.map((g,i)=>st.lv.has(i)?g.c.map(c=>chip("Class "+c,st.cls.has(c),"cls",c)).join(""):"").join("")}</div>`:"")+`</div>
+ <div class="grp"><p class="lbl">Day <span>select one or more</span></p><div class="row">${DAYS.map(d=>chip(d.slice(0,3),st.day.has(d),"day",d,d===clk0.day)).join("")}${chip("Whole week",!st.day.size,"dayAll")}</div></div>
+ <div class="grp"><p class="lbl">Subject <span>select one or more</span></p><div class="row">${chip("All subjects",!st.sub.size,"subAll")}${SUBS.map(s=>chip(s,st.sub.has(s),"sub",s)).join("")}</div></div>
+ <div class="grp"><p class="lbl">What’s on at a time?</p><div class="tm"><input type="time" value="${st.t}" data-a="time" aria-label="Time"><button class="btn o" data-a="tnow">Now</button><button class="btn o" data-a="tclr">Clear</button></div></div>`+
+ (P?`<div class="grp"><div class="row">${chip("Only my lessons",st.mine,"mine")}</div></div>`:"")+`</section>`;
+ const days=st.day.size?DAYS.filter(d=>st.day.has(d)):DAYS;
+ const eff=st.cls.size?[...st.cls].sort((a,b)=>a-b):st.lv.size?GROUPS.flatMap((g,i)=>st.lv.has(i)?g.c:[]):CLASSES;
+ let rows=D.filter(o=>eff.includes(o.cls)&&days.includes(o.day)&&(!st.sub.size||st.sub.has(o.sub))&&(!st.mine||mine(o)));
+ if(st.t){const t=m(st.t);rows=rows.filter(o=>m(o.s)<=t&&t<m(o.e))}
+ if(eff.length===1&&!st.sub.size&&!st.t&&!st.mine)days.forEach(d=>fixed(eff[0]).forEach(f=>{if(f.days.includes(d))rows.push({...f,x:1,day:d,cls:eff[0]})}));
+ const real=rows.filter(o=>!o.x),byCls=st.g==="cls",k=clock();
+ rows.sort(byCls?(a,b)=>a.cls-b.cls||DAYS.indexOf(a.day)-DAYS.indexOf(b.day)||m(a.s)-m(b.s):(a,b)=>DAYS.indexOf(a.day)-DAYS.indexOf(b.day)||byTime(a,b));
+ const mins=real.reduce((a,o)=>a+m(o.e)-m(o.s),0);
+ const cl=st.cls.size?(st.cls.size===1?"Class ":"Classes ")+[...st.cls].sort((a,b)=>a-b).join(", "):st.lv.size?GROUPS.filter((g,i)=>st.lv.has(i)).map(g=>g.l.split(" ")[0]).join(" + ")+" classes":"all classes";
+ const sl=st.sub.size>1?" · "+[...st.sub].sort().join(", "):"";
+ h+=`<div class="bar"><div class="sum">${real.length} ${st.sub.size===1?[...st.sub][0]+" ":""}period${real.length===1?"":"s"}<small>${cl} · ${days.length===5?"whole week":days.map(d=>d.slice(0,3)).join(", ")}${sl}${st.t?" · at "+f12(st.t):""}${real.length?" · "+(mins/60).toFixed(mins%60?1:0)+" hrs":""}</small></div>
+ <div class="seg"><button data-a="g" data-v="day" aria-pressed="${!byCls}">By day</button><button data-a="g" data-v="cls" aria-pressed="${byCls}">By class</button></div></div>`;
+ if(!real.length)return h+`<div class="empty"><b>No lessons match these filters.</b><br>Try another day, subject or time.</div>`;
+ let last;rows.forEach(o=>{const key=byCls?"Class "+o.cls+" · "+LVN(o.cls):o.day;if(key!==last){h+=`<h2 class="g">${key}</h2>`;last=key}
+  h+=card(o,{cls:eff.length!==1,state:o.x?"":stateOf(o,o.day,k)})});
+ return h}
+
+const count=x=>D.filter(o=>matchSc(x,o)).length;
+function schedView(){
+ const x=E.sc,pc=[...E.pc].sort((a,b)=>a-b),ps=[...E.ps];
+ return `<div class="in"><div class="sh"><b>${E.ed<0?"New schedule":"Edit schedule"}</b><button class="ic" data-a="scancel">Cancel</button></div>
+ <section class="panel"><p class="lbl">Schedule name <span>optional</span></p><input type="text" data-a="lbl" value="${esc(x.label)}" placeholder="e.g. Mon–Wed mornings" maxlength="30"></section>
+ <section class="panel"><p class="lbl">Days <span>none = every day</span></p><div class="row wr">${DAYS.map(d=>chip(d.slice(0,3),x.days.has(d),"sday",d)).join("")}</div></section>
+ <section class="panel"><p class="lbl">Shift hours <span>start and end</span></p><div class="tm"><input type="time" data-a="ss" value="${x.s}" aria-label="Shift start"><span>to</span><input type="time" data-a="se" value="${x.e}" aria-label="Shift end"></div>
+  <p class="mu" style="margin:8px 0 0">Only lessons inside this window are counted as yours.</p></section>
+ <section class="panel"><p class="lbl">Subjects &amp; classes</p>
+  ${x.lines.map((l,i)=>`<div class="line"><span>${l.sub} · ${l.cls.length===1?"Class ":"Classes "}${l.cls.join(", ")}</span><span class="ac"><button data-a="rmline" data-v="${i}" aria-label="Remove">✕</button></span></div>`).join("")}
+  <p class="lbl" style="margin-top:10px">Subjects <span>pick one or more</span></p><div class="row wr">${SUBS.filter(s=>!/Test|Worship|P\.E/.test(s)).map(s=>chip(s,E.ps.has(s),"psub",s)).join("")}</div>
+  <p class="lbl" style="margin-top:12px">Classes <span>pick one or more</span></p><div class="row wr">${CLASSES.map(c=>chip(c,E.pc.has(c),"pcls",c)).join("")}</div>
+  <div style="margin-top:12px"><button class="btn" data-a="addline" ${ps.length&&pc.length?"":"disabled"}>Add ${ps.length>1?ps.length+" subjects":ps[0]||"subjects"}${pc.length?" to "+(pc.length===1?"Class ":"Classes ")+pc.join(", "):""}</button></div></section>
+ ${err?`<p class="err">${esc(err)}</p>`:""}
+ <button class="btn" style="width:100%" data-a="sdone">Done</button></div>`}
+function sheetView(){
+ if(E.sc)return schedView();
+ const d=E,ok=d.schedules.length>0&&!busy;
+ return `<div class="in"><div class="sh"><b>Teaching profile</b><button class="ic" data-a="close">Close</button></div>
+ <section class="panel"><p class="lbl">Your name <span>optional</span></p><input type="text" data-a="name" value="${esc(d.name)}" placeholder="e.g. Mr. Mensah" maxlength="40" autocomplete="name"></section>
+ <section class="panel"><p class="lbl">Schedules <span>each has its own days, shift &amp; subjects</span></p>
+  ${d.schedules.map((x,i)=>`<div class="line"><span><b>${esc(x.label)}</b><small>${dayTxt(x)} · ${f12(x.shift.s)}–${f12(x.shift.e)}</small><small>${x.lines.map(l=>l.sub+" ("+l.cls.join(",")+")").join(" · ")}</small><small>${count(x)} periods a week</small></span><span class="ac"><button data-a="esc" data-v="${i}" aria-label="Edit">✎</button><button data-a="dsc" data-v="${i}" aria-label="Delete">✕</button></span></div>`).join("")||'<p class="mu">No schedules yet.</p>'}
+  <button class="btn o" style="margin-top:6px" data-a="asc">+ Add schedule</button></section>
+ <section class="panel"><p class="lbl">Device backup <span>required</span></p>
+  <p class="mu">Cloud backup is disabled. Choose a folder on this device; Rochma will save and restore backups only in that folder. Folder access is requested again if permission is missing or revoked.</p>
+  <button class="btn o" style="width:100%;margin:8px 0" data-a="folder">${backupDir?'Change backup folder':'Choose backup folder'}</button>
+  ${err?`<p class="err">${esc(err)}</p>`:""}
+  <button class="btn" style="width:100%;margin-top:4px" data-a="save" ${ok?"":"disabled"}>${busy||(d.schedules.length?"Save profile backup":"Add a schedule to continue")}</button>
+  <p class="mu" style="margin:8px 0 0">Your working profile remains in this browser. Backup files are written only to the folder you select.</p></section>
+ <section class="panel"><p class="lbl">Restore</p><div class="row"><button class="btn o" data-a="rfile">Restore from chosen folder</button>${P?`<button class="btn d" data-a="del">Delete profile</button>`:""}</div>
+  <p class="mu" style="margin:8px 0 0">Restores the Rochma JSON backup from your selected folder. No cloud backup or cloud restore is available.</p></section></div>`}
+
+/* ---------- render ---------- */
+function render(){
+ $("ttl").textContent=st.tab==="home"?(P&&P.name?"Hello, "+P.name:"Today"):"Explore";
+ $("v").innerHTML=st.tab==="home"?homeView():exploreView();
+ $("tabs").innerHTML=`<button data-a="tab" data-v="home" ${st.tab==="home"?'aria-current="page"':""}><b>◔</b>Today</button><button data-a="tab" data-v="explore" ${st.tab==="explore"?'aria-current="page"':""}><b>⌕</b>Explore</button><button data-a="edit"><b>☺</b>${P?"Profile":"Set up"}</button>`;
+ $("thm").textContent="Theme: "+theme;
+ const r=document.documentElement;theme==="auto"?r.removeAttribute("data-theme"):r.setAttribute("data-theme",theme);
+ if(E)drawSheet()}
+function drawSheet(){const s=$("sheet"),y=s.scrollTop;s.hidden=false;s.innerHTML=sheetView();s.scrollTop=y}
+let tt;function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),2600)}
+const cloneSc=x=>({...x,days:[...x.days],shift:{...x.shift},lines:x.lines.map(l=>({sub:l.sub,cls:[...l.cls]}))});
+function openSheet(){E={name:P?P.name:"",schedules:P?P.schedules.map(cloneSc):[],sc:null,ed:-1,ps:new Set(),pc:new Set(),backup:P&&P.backup&&P.backup.kind!=="import"?P.backup.kind:null};err="";busy="";drawSheet()}
+function closeSheet(){E=null;$("sheet").hidden=true;render()}
+
+/* ---------- device-folder backup (File System Access API) ---------- */
+const HANDLE_DB="rochma-device-backup",HANDLE_STORE="handles",HANDLE_KEY="backup-directory";
+function openHandleDb(){return new Promise((resolve,reject)=>{const r=indexedDB.open(HANDLE_DB,1);r.onupgradeneeded=()=>r.result.createObjectStore(HANDLE_STORE);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error||new Error("Could not access local folder settings."))})}
+async function saveHandle(handle){const db=await openHandleDb();return new Promise((resolve,reject)=>{const tx=db.transaction(HANDLE_STORE,"readwrite");tx.objectStore(HANDLE_STORE).put(handle,HANDLE_KEY);tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>{db.close();reject(tx.error)}})}
+async function loadHandle(){const db=await openHandleDb();return new Promise((resolve,reject)=>{const r=db.transaction(HANDLE_STORE,"readonly").objectStore(HANDLE_STORE).get(HANDLE_KEY);r.onsuccess=()=>{db.close();resolve(r.result||null)};r.onerror=()=>{db.close();reject(r.error)}})}
+async function chooseBackupFolder(){
+ if(!window.showDirectoryPicker)throw new Error("This browser does not support folder access. Open Rochma in a supported browser over HTTPS.");
+ const handle=await window.showDirectoryPicker({id:"rochma-backup-folder",mode:"readwrite"});
+ const permission=await handle.requestPermission({mode:"readwrite"});
+ if(permission!=="granted")throw new Error("Read/write permission was not granted. Select a folder and allow access to continue.");
+ await saveHandle(handle);backupDir=handle;return handle;
+}
+async function ensureBackupFolder(){
+ let handle=backupDir;
+ if(!handle)try{handle=await loadHandle()}catch(e){}
+ if(handle){try{let p=await handle.queryPermission({mode:"readwrite"});if(p!=="granted")p=await handle.requestPermission({mode:"readwrite"});if(p==="granted"){backupDir=handle;return handle}}catch(e){}}
+ return await chooseBackupFolder();
+}
+async function backupToFolder(json){
+ const dir=await ensureBackupFolder();
+ const file=await dir.getFileHandle(FILE,{create:true});
+ const writable=await file.createWritable();
+ try{await writable.write(json);await writable.close()}catch(e){try{await writable.abort()}catch(x){}throw e}
+}
+async function readBackupFromFolder(){
+ const dir=await ensureBackupFolder();
+ let file;try{file=await dir.getFileHandle(FILE)}catch(e){if(e&&e.name==="NotFoundError")throw new Error("No Rochma backup was found in that folder. Save a profile first.");throw e}
+ return await (await file.getFile()).text();
+}
+async function save(){
+ const d=E;err="";busy="Saving…";drawSheet();
+ const p=normalize({name:d.name.trim(),schedules:d.schedules});
+ if(!p){busy="";err="Check your schedules and shift hours.";return drawSheet()}
+ const prev=P;P=p;
+ if(!persist()){P=prev;busy="";err="Browser storage is unavailable, so the profile can’t be kept.";return drawSheet()}
+ try{await backupToFolder(payload());P.backup={kind:"device-folder",at:Date.now()};persist();closeSheet();toast("Profile saved to chosen folder")}
+ catch(e){busy="";err=(e&&e.message||"Backup failed.")+" Choose a folder and grant read/write access to finish.";drawSheet();render()}}
+function adopt(raw,src){
+ let p=null;try{p=normalize(JSON.parse(raw))}catch(e){}
+ if(!p){err="That file isn’t a valid Rochma profile backup.";if(E)drawSheet();return false}
+ P={...p,updated:Date.now(),backup:{kind:src,at:Date.now()}};persist();closeSheet();toast("Profile restored");return true}
+async function restoreFolder(){
+ try{const raw=await readBackupFromFolder();adopt(raw,"device-folder")}
+ catch(e){err=e&&e.message||"Couldn’t read the backup from the chosen folder.";drawSheet()}}
+
+/* ---------- events ---------- */
+document.addEventListener("click",e=>{
+ const b=e.target.closest("[data-a]");if(!b||b.tagName==="INPUT")return;const a=b.dataset.a,v=b.dataset.v;
+ switch(a){
+  case"tab":st.tab=v;break;
+  case"hday":st.hd=st.hd===v?null:v;break;
+  case"theme":theme=THEMES[(THEMES.indexOf(theme)+1)%3];try{localStorage.setItem("rochma-theme",theme)}catch(x){}break;
+  case"lvAll":st.lv.clear();st.cls.clear();break;
+  case"lv":{const i=+v,g=GROUPS[i];if(st.lv.has(i)){st.lv.delete(i);g.c.forEach(c=>st.cls.delete(c))}else st.lv.add(i);break}
+  case"cls":tog(st.cls,+v);break;
+  case"day":tog(st.day,v);break;case"dayAll":st.day.clear();break;
+  case"sub":tog(st.sub,v);break;case"subAll":st.sub.clear();break;
+  case"mine":st.mine=!st.mine;break;
+  case"g":st.g=v;break;
+  case"tnow":{const k=clock();st.t=k.hm;if(k.day)st.day=new Set([k.day]);break}
+  case"tclr":st.t="";break;
+  case"edit":openSheet();return;
+  case"close":closeSheet();return;
+  case"asc":E.sc={label:"",days:new Set(),s:"07:30",e:"15:30",lines:[]};E.ed=-1;E.ps=new Set();E.pc=new Set();err="";return drawSheet();
+  case"esc":{const x=E.schedules[+v];E.sc={label:x.label,days:new Set(x.days),s:x.shift.s,e:x.shift.e,lines:x.lines.map(l=>({sub:l.sub,cls:[...l.cls]}))};E.ed=+v;E.ps=new Set();E.pc=new Set();err="";return drawSheet()}
+  case"dsc":if(confirm("Delete this schedule?")){E.schedules.splice(+v,1);drawSheet()}return;
+  case"scancel":E.sc=null;err="";return drawSheet();
+  case"sday":tog(E.sc.days,v);return drawSheet();
+  case"psub":tog(E.ps,v);return drawSheet();
+  case"pcls":tog(E.pc,+v);return drawSheet();
+  case"addline":{const c=[...E.pc].sort((x,y)=>x-y);
+   E.ps.forEach(sub=>{const l=E.sc.lines.find(x=>x.sub===sub);if(l)l.cls=[...new Set([...l.cls,...c])].sort((x,y)=>x-y);else E.sc.lines.push({sub,cls:[...c]})});
+   E.ps.clear();E.pc.clear();err="";return drawSheet()}
+  case"rmline":E.sc.lines.splice(+v,1);return drawSheet();
+  case"sdone":{const x=E.sc;
+   if(!x.lines.length){err="Add at least one subject with its classes.";return drawSheet()}
+   if(!TIME.test(x.s)||!TIME.test(x.e)||x.s>=x.e){err="Shift end must be later than shift start.";return drawSheet()}
+   const o={id:"s"+Date.now(),label:x.label.trim()||"Schedule "+(E.ed<0?E.schedules.length+1:E.ed+1),days:DAYS.filter(d=>x.days.has(d)),shift:{s:x.s,e:x.e},lines:x.lines};
+   if(E.ed<0)E.schedules.push(o);else E.schedules[E.ed]=o;E.sc=null;err="";return drawSheet()}
+  case"folder":return chooseBackupFolder().then(()=>{err="";toast("Backup folder selected");drawSheet()}).catch(e=>{err=e&&e.message||"Could not select backup folder.";drawSheet()});
+  case"save":return save();
+  case"rfile":return restoreFolder();
+  case"del":if(confirm("Delete your profile from this browser? Backups are not deleted.")){P=null;try{localStorage.removeItem(KEY)}catch(x){}closeSheet();toast("Profile deleted")}return;
+ }
+ render()});
+document.addEventListener("input",e=>{const a=e.target.dataset.a;if(!E)return;if(a==="name")E.name=e.target.value;if(a==="lbl"&&E.sc)E.sc.label=e.target.value});
+document.addEventListener("change",e=>{const a=e.target.dataset.a,v=e.target.value;
+ if(a==="time"){st.t=v;render()}
+ else if(a==="ss"&&E&&E.sc){E.sc.s=v;drawSheet()}
+ else if(a==="se"&&E&&E.sc){E.sc.e=v;drawSheet()}});
+
+setInterval(()=>{if(st.tab==="home"&&!E)render()},60000);
+render();
+(async()=>{try{backupDir=await loadHandle()}catch(e){backupDir=null}})();
+</script>
+</body>
+</html>
